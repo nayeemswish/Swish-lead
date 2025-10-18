@@ -1,4 +1,5 @@
 import React from "react";
+import MultiStepForm from "./MultiStepForm";
 
 const ContactSection = () => {
   return (
@@ -27,6 +28,8 @@ const ContactSection = () => {
       >
         Get My FREE Planning Kit →
       </button>
+
+      <MultiStepForm></MultiStepForm>
     </section>
   );
 };
