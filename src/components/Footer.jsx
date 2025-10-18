@@ -11,7 +11,8 @@ const Footer = () => {
       }}
     >
       <p style={{ fontWeight: "500" }}>
-        © 2025 Swish Global. All rights reserved.
+        © 2025 <a href="https://www.swish.global/">Swish Global.</a> All rights
+        reserved.
       </p>
       <p style={{ fontSize: "0.9rem", color: "#aaa" }}>
         Privacy Policy | Terms of Service

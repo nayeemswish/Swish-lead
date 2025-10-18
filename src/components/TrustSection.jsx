@@ -1,3 +1,5 @@
+import { faBoxOpen, faGem, faTrophy } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 const TrustSection = () => {
@@ -22,23 +24,23 @@ const TrustSection = () => {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: "60px",
+          gap: "100px",
           paddingBottom: "100px",
         }}
       >
         {[
           {
-            icon: "🧰",
+            icon: <FontAwesomeIcon icon={faBoxOpen}></FontAwesomeIcon>,
             title: "Complete Solution",
             text: "Kitchens & bathrooms under one roof. No need for multiple vendors.",
           },
           {
-            icon: "🎯",
+            icon: <FontAwesomeIcon icon={faTrophy}></FontAwesomeIcon>,
             title: "Expert Guidance",
             text: "Free design consultation & lifetime planning support.",
           },
           {
-            icon: "💎",
+            icon: <FontAwesomeIcon icon={faGem}></FontAwesomeIcon>,
             title: "Luxury Quality",
             text: "Premium brands with warranty protection and lifetime quality.",
           },

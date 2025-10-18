@@ -1,8 +1,8 @@
 import React from "react";
 
-const HeroSection = () => {
+const KitchenwareSection = () => {
   const bgImage =
-    "https://www.swish.global/wp-content/uploads/2024/01/bathware-solution-1-1.jpg"; // replace with your background image path
+    "https://staging.swish.global/wp-content/uploads/2025/10/Klasso-KH-0300114-72-SWISH-Smart-Kitchen-Hood-Landing-Page-Banner.webp"; // replace with your background image path
 
   const sectionStyle = {
     width: "100%",
@@ -52,14 +52,14 @@ const HeroSection = () => {
     <section style={sectionStyle}>
       <div style={overlayStyle}></div>
       <div style={textBox}>
-        <h1 style={titleStyle}>Design Your Dream Washroom</h1>
+        <h1 style={titleStyle}>Design Your Dream Kitchen</h1>
         <p style={subTitleStyle}>
-          Discover elegant designs and innovative features to create a washroom
-          that reflects your style and comfort.
+          Explore stylish designs and smart innovations to craft a kitchen that
+          perfectly matches your taste and enhances your comfort.
         </p>
       </div>
     </section>
   );
 };
 
-export default HeroSection;
+export default KitchenwareSection;
