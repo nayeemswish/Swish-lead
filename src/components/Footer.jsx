@@ -11,11 +11,44 @@ const Footer = () => {
       }}
     >
       <p style={{ fontWeight: "500" }}>
-        © 2025 <a href="https://www.swish.global/">Swish Global.</a> All rights
-        reserved.
+        © 2025{" "}
+        <a
+          href="https://www.swish.global/"
+          style={{ textDecoration: "none", color: "#fff" }}
+        >
+          Swish Global.
+        </a>{" "}
+        All rights reserved.
       </p>
-      <p style={{ fontSize: "0.9rem", color: "#aaa" }}>
-        Privacy Policy | Terms of Service
+
+      <p style={{ fontSize: "0.9rem", marginTop: "10px" }}>
+        <a
+          href="https://bd.swish.global/warranty-policy/"
+          style={{
+            textDecoration: "none",
+            color: "#aaa",
+            marginRight: "10px",
+            transition: "color 0.3s ease",
+          }}
+          onMouseEnter={(e) => (e.target.style.color = "#fff")}
+          onMouseLeave={(e) => (e.target.style.color = "#aaa")}
+        >
+          Warranty Policy
+        </a>
+        |
+        <a
+          href="https://bd.swish.global/terms-conditions/"
+          style={{
+            textDecoration: "none",
+            color: "#aaa",
+            marginLeft: "10px",
+            transition: "color 0.3s ease",
+          }}
+          onMouseEnter={(e) => (e.target.style.color = "#fff")}
+          onMouseLeave={(e) => (e.target.style.color = "#aaa")}
+        >
+          Terms of Service
+        </a>
       </p>
     </footer>
   );

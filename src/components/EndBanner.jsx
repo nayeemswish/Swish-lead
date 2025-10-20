@@ -1,9 +1,12 @@
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 
 function EndBanner() {
+  // State for hover effects
+  const [hovered, setHovered] = useState(null);
+
   return (
     <section
       className="d-flex flex-column justify-content-center align-items-center text-center"
@@ -23,7 +26,7 @@ function EndBanner() {
           gap: "30px",
         }}
       >
-        <h2 className=" fs-2" style={{ color: "white", fontWeight: "600" }}>
+        <h2 className="fs-2" style={{ color: "white", fontWeight: "600" }}>
           Experience the Perfect Blend of Style & Function
         </h2>
 
@@ -43,7 +46,7 @@ function EndBanner() {
             justifyContent: "center",
             gap: "20px",
             color: "white",
-            flexWrap: "wrap", // mobile responsive
+            flexWrap: "wrap",
             fontSize: "1.1rem",
           }}
         >
@@ -55,15 +58,15 @@ function EndBanner() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "6px",
-              color: "white",
+              gap: "8px",
+              color: hovered === "phone" ? "#0dcaf0" : "white",
               textDecoration: "none",
               fontSize: "17px",
               fontWeight: 500,
               transition: "color 0.3s ease",
             }}
-            onMouseEnter={(e) => (e.target.style.color = "#0dcaf0")}
-            onMouseLeave={(e) => (e.target.style.color = "white")}
+            onMouseEnter={() => setHovered("phone")}
+            onMouseLeave={() => setHovered(null)}
           >
             <FontAwesomeIcon icon={faPhone} /> +880 1712-345678
           </a>
@@ -77,16 +80,16 @@ function EndBanner() {
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              color: "white",
+              color: hovered === "whatsapp" ? "#25D366" : "white",
               textDecoration: "none",
               fontSize: "18px",
               fontWeight: 500,
               transition: "color 0.3s ease",
             }}
-            onMouseEnter={(e) => (e.target.style.color = "#25D366")}
-            onMouseLeave={(e) => (e.target.style.color = "white")}
+            onMouseEnter={() => setHovered("whatsapp")}
+            onMouseLeave={() => setHovered(null)}
           >
-            <FontAwesomeIcon icon={faWhatsapp} /> WhatsApp
+            <FontAwesomeIcon icon={faWhatsapp} size="lg" /> WhatsApp
           </a>
         </div>
       </div>

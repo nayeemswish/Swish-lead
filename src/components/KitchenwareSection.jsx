@@ -2,11 +2,11 @@ import React from "react";
 
 const KitchenwareSection = () => {
   const bgImage =
-    "https://staging.swish.global/wp-content/uploads/2025/10/Klasso-KH-0300114-72-SWISH-Smart-Kitchen-Hood-Landing-Page-Banner.webp"; // replace with your background image path
+    "https://staging.swish.global/wp-content/uploads/2025/10/Klasso-KH-0300114-72-SWISH-Smart-Kitchen-Hood-Landing-Page-Banner.webp";
 
   const sectionStyle = {
     width: "100%",
-    height: "100vh",
+    minHeight: "100vh", // prevents overflow on mobile
     backgroundImage: `url(${bgImage})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -17,6 +17,7 @@ const KitchenwareSection = () => {
     position: "relative",
     color: "#fff",
     textAlign: "center",
+    overflow: "hidden",
   };
 
   const overlayStyle = {
@@ -32,20 +33,26 @@ const KitchenwareSection = () => {
   const textBox = {
     position: "relative",
     zIndex: 2,
-    padding: "20px",
+    padding: "40px 20px",
     maxWidth: "900px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "20px",
   };
 
   const titleStyle = {
-    fontSize: "3rem",
+    fontSize: "clamp(2rem, 5vw, 3.5rem)", // responsive font
     fontWeight: 700,
-    marginBottom: "20px",
+    marginBottom: "10px",
+    lineHeight: "1.2",
   };
 
   const subTitleStyle = {
-    fontSize: "1.3rem",
+    fontSize: "clamp(1rem, 2.5vw, 1.4rem)",
     fontWeight: 300,
     lineHeight: "1.6",
+    maxWidth: "700px",
   };
 
   return (

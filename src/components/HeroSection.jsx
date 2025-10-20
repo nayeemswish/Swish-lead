@@ -2,11 +2,11 @@ import React from "react";
 
 const HeroSection = () => {
   const bgImage =
-    "https://www.swish.global/wp-content/uploads/2024/01/bathware-solution-1-1.jpg"; // replace with your background image path
+    "https://www.swish.global/wp-content/uploads/2024/01/bathware-solution-1-1.jpg";
 
   const sectionStyle = {
     width: "100%",
-    height: "100vh",
+    minHeight: "100vh",
     backgroundImage: `url(${bgImage})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -17,6 +17,7 @@ const HeroSection = () => {
     position: "relative",
     color: "#fff",
     textAlign: "center",
+    overflow: "hidden",
   };
 
   const overlayStyle = {
@@ -32,7 +33,7 @@ const HeroSection = () => {
   const textBox = {
     position: "relative",
     zIndex: 2,
-    padding: "20px",
+    padding: "40px 20px",
     maxWidth: "900px",
     display: "flex",
     flexDirection: "column",
@@ -41,15 +42,26 @@ const HeroSection = () => {
   };
 
   const titleStyle = {
-    fontSize: "3rem",
+    fontSize: "clamp(2rem, 5vw, 3.5rem)", // responsive font size
     fontWeight: 700,
-    marginBottom: "20px",
+    marginBottom: "10px",
+    lineHeight: "1.2",
   };
 
   const subTitleStyle = {
-    fontSize: "1.3rem",
+    fontSize: "clamp(1rem, 2.5vw, 1.4rem)",
     fontWeight: 300,
     lineHeight: "1.6",
+    maxWidth: "700px",
+  };
+
+  const buttonStyle = {
+    transition:
+      "background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease",
+    textDecoration: "none",
+    borderRadius: "50px",
+    padding: "15px 100px",
+    fontSize: "1.1rem",
   };
 
   return (
@@ -63,12 +75,8 @@ const HeroSection = () => {
         </p>
         <a
           href="#Build-section-id"
-          className="btn btn-outline-light rounded-pill px-5 btn-lg"
-          style={{
-            transition:
-              "background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease",
-            textDecoration: "none", // ensure no underline
-          }}
+          className="btn btn-outline-light"
+          style={buttonStyle}
         >
           Start
         </a>

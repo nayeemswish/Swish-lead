@@ -8,14 +8,23 @@ const ContactSection = () => {
       style={{
         textAlign: "center",
         backgroundColor: "#f0f4fa",
-        padding: "100px",
+        padding: "clamp(40px, 8vw, 100px)", // responsive padding
       }}
     >
-      <h2 style={{ fontWeight: "600", marginBottom: "80px" }}>
+      <h2
+        style={{
+          fontWeight: 600,
+          marginBottom: "60px",
+          fontSize: "clamp(1.5rem, 3vw, 2.2rem)", // responsive font
+          lineHeight: "1.3",
+          maxWidth: "900px",
+          marginInline: "auto", // centers the text block properly
+        }}
+      >
         Ready to Build Your Dream Kitchen & Bathroom?
       </h2>
 
-      <MultiStepForm></MultiStepForm>
+      <MultiStepForm />
     </section>
   );
 };

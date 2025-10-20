@@ -71,6 +71,23 @@ const MultiStepForm = () => {
     if (validateStep()) {
       console.log("Form Submitted:", formData);
       alert("Form submitted successfully!");
+
+      // Reset form data
+      setFormData({
+        fullName: "",
+        email: "",
+        number: "",
+        location: "",
+        size: "",
+        stage: "",
+        buyTimeline: "",
+        budget: "",
+        requirements: "",
+      });
+
+      // Reset step and errors
+      setCurrentStep(0);
+      setErrors({});
     }
   };
 
