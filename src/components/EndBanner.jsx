@@ -11,7 +11,7 @@ function EndBanner() {
     <section
       className="d-flex flex-column justify-content-center align-items-center text-center"
       style={{
-        backgroundColor: "#173b5e",
+        backgroundColor: "#272625",
         color: "white",
         padding: "40px 20px",
         minHeight: "40vh",
@@ -27,7 +27,8 @@ function EndBanner() {
         }}
       >
         <h2 className="fs-2" style={{ color: "white", fontWeight: "600" }}>
-          Experience the Perfect Blend of Style & Function
+          Experience the Perfect <br />
+          Blend of Style & Function
         </h2>
 
         <a
