@@ -4,6 +4,7 @@ import MultiStepForm from "./MultiStepForm";
 const ContactSection = () => {
   return (
     <section
+      id="Build-section-id"
       style={{
         textAlign: "center",
         backgroundColor: "#f0f4fa",

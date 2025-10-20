@@ -34,6 +34,10 @@ const HeroSection = () => {
     zIndex: 2,
     padding: "20px",
     maxWidth: "900px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "20px",
   };
 
   const titleStyle = {
@@ -57,6 +61,17 @@ const HeroSection = () => {
           Discover elegant designs and innovative features to create a washroom
           that reflects your style and comfort.
         </p>
+        <a
+          href="#Build-section-id"
+          className="btn btn-outline-light rounded-pill px-5 btn-lg"
+          style={{
+            transition:
+              "background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease",
+            textDecoration: "none", // ensure no underline
+          }}
+        >
+          Start
+        </a>
       </div>
     </section>
   );

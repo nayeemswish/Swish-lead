@@ -13,7 +13,7 @@ const TrustSection = () => {
           paddingTop: "100px",
         }}
       >
-        Why Families Trust Swish
+        Why Families Trust SWISH
       </h2>
       <p style={{ color: "#555", marginBottom: "50px", paddingBottom: "20px" }}>
         Everything you need to create your dream space, with expert support
