@@ -10,14 +10,13 @@ const TrustSection = () => {
           fontSize: "2rem",
           fontWeight: "600",
           marginBottom: "10px",
-          paddingTop: "100px",
         }}
       >
         Why Families Trust SWISH
       </h2>
       <p style={{ color: "#555", marginBottom: "50px", paddingBottom: "20px" }}>
-        Everything you need to create your dream space, with expert support
-        every step of the way.
+        Everything you need to create your dream space, <br /> with expert
+        support every step of the way.
       </p>
       <div
         style={{
@@ -25,7 +24,6 @@ const TrustSection = () => {
           flexWrap: "wrap",
           justifyContent: "center",
           gap: "100px",
-          paddingBottom: "100px",
         }}
       >
         {[

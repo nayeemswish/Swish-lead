@@ -91,26 +91,60 @@ const MultiStepForm = () => {
     }
   };
 
+  // small input/select classes + validation class
   const getInputClass = (field) =>
-    `form-control ${errors[field] ? "is-invalid" : ""}`;
+    `form-control form-control-sm ${errors[field] ? "is-invalid" : ""}`;
   const getSelectClass = (field) =>
-    `form-select ${errors[field] ? "is-invalid" : ""}`;
+    `form-select form-select-sm ${errors[field] ? "is-invalid" : ""}`;
 
   return (
     <div className="d-flex justify-content-center ">
+      {/* compact input sizing tweaks */}
+      <style>{`
+        /* Make inputs compact: smaller height, padding, font-size */
+        .form-control-sm, .form-select-sm {
+          height: 40px;            /* smaller height */
+          padding: 6px 10px;      /* tighter padding */
+          font-size: 0.92rem;     /* slightly smaller font */
+          border-radius: 8px;     /* rounded corners */
+        }
+
+        /* smaller textarea-like controls if any in future */
+        textarea.form-control-sm { height: 80px; padding: 8px 10px; }
+
+        /* tighten label spacing */
+        .form-label { margin-bottom: 6px; font-size: 0.95rem; }
+
+        /* reduce gap between rows */
+        .mb-3 { margin-bottom: 10px !important; }
+
+        /* keep bootstrap invalid feedback visible but slightly smaller */
+        .invalid-feedback { font-size: 0.85rem; }
+
+        /* make radio and check spacing slightly tighter */
+        .form-check { margin-bottom: 6px; }
+        .form-check-label { font-size: 0.94rem; margin-left: 8px; }
+
+        /* if you want selects to show compact option height on some browsers */
+        select.form-select-sm option { padding: 6px 10px; }
+
+        /* optional: keep buttons same but slightly smaller on mobile */
+        @media (max-width: 480px) {
+          .form-control-sm, .form-select-sm { height: 38px; font-size: 0.9rem; }
+        }
+      `}</style>
+
       <div
-        className="card py-5 mt-2 px-3 w-100"
+        className="card py-4 mt-2 px-3 w-100"
         style={{ maxWidth: "600px", minWidth: "400px" }}
       >
         <div className="">
-          {/* <h2 className="mb-3 text-center">Multi-Step Form</h2> */}
-
           {/* 3-Slab Rounded Progress Bar */}
           <div className="d-flex mb-4" style={{ height: "12px", gap: "4px" }}>
             {steps.map((_, index) => (
               <div
                 key={index}
-                className={currentStep >= index ? "bg-primary" : "bg-light"}
+                className={currentStep >= index ? "bg-extra" : "bg-light"}
                 style={{
                   flex: 1,
                   borderRadius:
@@ -155,6 +189,7 @@ const MultiStepForm = () => {
                   <label className="form-label">Full Name</label>
                   <input
                     type="text"
+                    placeholder="Enter your full name"
                     className={getInputClass("fullName")}
                     value={formData.fullName}
                     onChange={(e) =>
@@ -170,6 +205,7 @@ const MultiStepForm = () => {
                   <label className="form-label">Email Address</label>
                   <input
                     type="email"
+                    placeholder="your.email@example.com"
                     className={getInputClass("email")}
                     value={formData.email}
                     onChange={(e) =>
@@ -185,6 +221,7 @@ const MultiStepForm = () => {
                   <label className="form-label">Phone Number</label>
                   <input
                     type="text"
+                    placeholder="01700-000000"
                     className={getInputClass("number")}
                     value={formData.number}
                     onChange={(e) =>
@@ -207,6 +244,7 @@ const MultiStepForm = () => {
                   </label>
                   <input
                     type="text"
+                    placeholder="Dhaka"
                     className={getInputClass("location")}
                     value={formData.location}
                     onChange={(e) =>
@@ -361,7 +399,9 @@ const MultiStepForm = () => {
               <button
                 type={currentStep === totalSteps - 1 ? "submit" : "button"}
                 className={`btn ${
-                  currentStep === totalSteps - 1 ? "btn-success" : "btn-primary"
+                  currentStep === totalSteps - 1
+                    ? " bg-extra"
+                    : "btn-primary bg-extra"
                 } ${
                   currentStep === 0 ? "w-100" : "flex-grow-1 flex-sm-grow-0"
                 }`}

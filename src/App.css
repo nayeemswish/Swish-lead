@@ -24,3 +24,29 @@ button {
 a {
   text-decoration: none;
 }
+
+.get-est:hover {
+  border: 1px solid #febe00 !important;
+  background-color: #ffffff00 !important;
+  color: #febe00 !important;
+}
+:root {
+  --bs-secondary: #febe00;
+  --bg-extra: #febe00 !important; /* Custom primary color */
+}
+.bg-extra {
+  background-color: #febe00 !important;
+  border: 1px solid #febe00 !important;
+  color: #000000 !important;
+}
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus,
+.form-check-input:checked {
+  border-color: #febe00 !important; /* Custom border color */
+  box-shadow: 0 0 0 0.25rem #febe0000 !important; /* Optional glow effect */
+}
+.form-check-input:focus,
+.form-check-input:checked {
+  background-color: #febe00 !important;
+}
