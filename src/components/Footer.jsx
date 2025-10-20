@@ -10,11 +10,16 @@ const Footer = () => {
         textAlign: "center",
       }}
     >
+      <img
+        src="https://www.swish.global/wp-content/uploads/2024/01/Swiss-Logo-3-1-1.png"
+        alt="SWISH"
+        style={{ width: "150px", marginBottom: "30px" }}
+      />
       <p style={{ fontWeight: "500" }}>
         © 2025{" "}
         <a
           href="https://www.swish.global/"
-          style={{ textDecoration: "none", color: "#FEBE00" }}
+          style={{ textDecoration: "none", color: "#ff2929fd" }}
         >
           Swish Global.
         </a>{" "}

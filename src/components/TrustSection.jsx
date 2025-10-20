@@ -12,7 +12,7 @@ const TrustSection = () => {
           marginBottom: "10px",
         }}
       >
-        Why Families Trust SWISH
+        Why SWISH
       </h2>
       <p style={{ color: "#555", marginBottom: "50px", paddingBottom: "20px" }}>
         Everything you need to create your dream space, <br /> with expert
@@ -23,40 +23,72 @@ const TrustSection = () => {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: "100px",
+          gap: "40px",
         }}
       >
         {[
           {
-            icon: <FontAwesomeIcon icon={faBoxOpen}></FontAwesomeIcon>,
-            title: "Complete Solution",
-            text: "Kitchens & bathrooms under one roof. No need for multiple vendors.",
+            icon: (
+              <img
+                src="https://www.swish.global/wp-content/uploads/2025/10/Design-1-1.svg"
+                alt="Design Icon"
+                style={{ width: "60px", height: "60px" }}
+              />
+            ),
+            title: "Design",
+            text: "With a talented research and development team, SWISH remains a trailblazer in new & trendy design innovation. We prioritise customer-driven concepts to produce the most exceptional solutions.",
           },
           {
-            icon: <FontAwesomeIcon icon={faTrophy}></FontAwesomeIcon>,
-            title: "Expert Guidance",
-            text: "Free design consultation & lifetime planning support.",
+            icon: (
+              <img
+                src="https://www.swish.global/wp-content/uploads/2025/10/Quality-1-1.svg"
+                alt="Quality Icon"
+                style={{
+                  width: "60px",
+                  height: "60px",
+                  stroke: "#febe00",
+                }}
+              />
+            ),
+            title: "Quality",
+            text: "SWISH creates exceptional products built with superior materials, embracing versatile innovative production techniques and cutting-edge research to set new standards of excellence.",
           },
           {
-            icon: <FontAwesomeIcon icon={faGem}></FontAwesomeIcon>,
-            title: "Luxury Quality",
-            text: "Premium brands with warranty protection and lifetime quality.",
+            icon: (
+              <img
+                src="https://www.swish.global/wp-content/uploads/2025/10/Service-1-1.svg"
+                alt="Service Icon"
+                style={{ width: "60px", height: "60px" }}
+              />
+            ),
+            title: "Service",
+            text: "At SWISH, we prioritise ongoing support, offering dedicated before and after-sales service to ensure customer satisfaction and build lasting trust at every stage.",
           },
         ].map((item, index) => (
           <div
             key={index}
             style={{
-              width: "300px",
+              width: "400px",
               backgroundColor: "#f8f9fc",
               borderRadius: "10px",
-              padding: "30px",
+              padding: "20px",
               boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
             }}
           >
-            <div style={{ fontSize: "2rem", marginBottom: "10px" }}>
+            <div
+              style={{
+                fontSize: "2rem",
+                marginBottom: "10px",
+              }}
+            >
               {item.icon}
             </div>
-            <h3 style={{ fontWeight: "500", marginBottom: "10px" }}>
+            <h3
+              style={{
+                fontWeight: "500",
+                marginBottom: "10px",
+              }}
+            >
               {item.title}
             </h3>
             <p style={{ fontSize: "0.95rem", color: "#666" }}>{item.text}</p>

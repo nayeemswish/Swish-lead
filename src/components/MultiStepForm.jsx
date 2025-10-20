@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// MultiStepForm.jsx
+import React, { useState, useRef, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -17,6 +18,10 @@ const MultiStepForm = () => {
     requirements: "",
   });
   const [errors, setErrors] = useState({});
+
+  // Toast state + timeout ref
+  const [showToast, setShowToast] = useState(false);
+  const toastTimeoutRef = useRef(null);
 
   const steps = ["Step 1", "Step 2", "Step 3"]; // for progress bar
   const totalSteps = steps.length;
@@ -59,20 +64,41 @@ const MultiStepForm = () => {
 
   const nextStep = () => {
     if (validateStep() && currentStep < totalSteps - 1) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep((s) => s + 1);
       setErrors({});
     }
   };
 
-  const prevStep = () => setCurrentStep(currentStep - 1);
+  const prevStep = () => setCurrentStep((s) => s - 1);
+
+  const clearToastTimeout = () => {
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current);
+      toastTimeoutRef.current = null;
+    }
+  };
+
+  const showSuccessToast = () => {
+    // clear any previous timeout
+    clearToastTimeout();
+    setShowToast(true);
+    // auto-hide after 10 seconds
+    toastTimeoutRef.current = setTimeout(() => {
+      setShowToast(false);
+      toastTimeoutRef.current = null;
+    }, 10000);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateStep()) {
+      // do submission work (API call etc). For demo we just log and show toast.
       console.log("Form Submitted:", formData);
-      alert("Form submitted successfully!");
 
-      // Reset form data
+      // show toast
+      showSuccessToast();
+
+      // Reset form data (optional — you asked for reset previously)
       setFormData({
         fullName: "",
         email: "",
@@ -91,6 +117,14 @@ const MultiStepForm = () => {
     }
   };
 
+  // cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      clearToastTimeout();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // small input/select classes + validation class
   const getInputClass = (field) =>
     `form-control form-control-sm ${errors[field] ? "is-invalid" : ""}`;
@@ -99,39 +133,47 @@ const MultiStepForm = () => {
 
   return (
     <div className="d-flex justify-content-center ">
-      {/* compact input sizing tweaks */}
+      {/* compact input sizing tweaks + toast styles */}
       <style>{`
         /* Make inputs compact: smaller height, padding, font-size */
         .form-control-sm, .form-select-sm {
-          height: 40px;            /* smaller height */
-          padding: 6px 10px;      /* tighter padding */
-          font-size: 0.92rem;     /* slightly smaller font */
-          border-radius: 8px;     /* rounded corners */
+          height: 40px;
+          padding: 6px 10px;
+          font-size: 0.92rem;
+          border-radius: 8px;
         }
-
-        /* smaller textarea-like controls if any in future */
         textarea.form-control-sm { height: 80px; padding: 8px 10px; }
-
-        /* tighten label spacing */
         .form-label { margin-bottom: 6px; font-size: 0.95rem; }
-
-        /* reduce gap between rows */
         .mb-3 { margin-bottom: 10px !important; }
-
-        /* keep bootstrap invalid feedback visible but slightly smaller */
         .invalid-feedback { font-size: 0.85rem; }
-
-        /* make radio and check spacing slightly tighter */
         .form-check { margin-bottom: 6px; }
         .form-check-label { font-size: 0.94rem; margin-left: 8px; }
-
-        /* if you want selects to show compact option height on some browsers */
         select.form-select-sm option { padding: 6px 10px; }
 
-        /* optional: keep buttons same but slightly smaller on mobile */
-        @media (max-width: 480px) {
-          .form-control-sm, .form-select-sm { height: 38px; font-size: 0.9rem; }
+        /* Toast container (top-right) */
+        .custom-toast-container {
+          position: fixed;
+          top: 5rem;
+          right: 40%;
+          z-index: 1080;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
         }
+
+        /* Slightly larger toast body for readability */
+        .custom-toast .toast-body {
+          font-size: 0.95rem;
+          padding-right: 0.5rem;
+        }
+
+        /* Add subtle shadow */
+        .custom-toast {
+          box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        /* Optional styling for your custom bg-extra if not present in global CSS */
+        .bg-extra { background-color: #0d6efd; color: white; }
       `}</style>
 
       <div
@@ -158,21 +200,20 @@ const MultiStepForm = () => {
               ></div>
             ))}
           </div>
+
           {/* Step Titles and Step count */}
           {currentStep === 0 && (
             <div className="text-start">
-              <h3>Basic Information</h3>
+              <h3>Basic Info</h3>
               <h5>Step 1 of 3</h5>
             </div>
           )}
-
           {currentStep === 1 && (
             <div className="text-start">
               <h3>Project Details</h3>
               <h5>Step 2 of 3</h5>
             </div>
           )}
-
           {currentStep === 2 && (
             <div className="text-start">
               <h3>Purchase Intent</h3>
@@ -419,6 +460,38 @@ const MultiStepForm = () => {
             </div>
           </form>
         </div>
+      </div>
+
+      {/* Toast container (top-right) */}
+      <div
+        className="custom-toast-container"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {showToast && (
+          <div
+            className="toast show custom-toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div className="d-flex align-items-start">
+              <div className="toast-body">
+                Please check your email inbox for your free planning kit &amp;
+                SWISH product catalogue
+              </div>
+              <button
+                type="button"
+                className="btn-close me-2 m-2"
+                aria-label="Close"
+                onClick={() => {
+                  setShowToast(false);
+                  clearToastTimeout();
+                }}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
