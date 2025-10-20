@@ -14,7 +14,7 @@ const Footer = () => {
         © 2025{" "}
         <a
           href="https://www.swish.global/"
-          style={{ textDecoration: "none", color: "#fff" }}
+          style={{ textDecoration: "none", color: "#FEBE00" }}
         >
           Swish Global.
         </a>{" "}

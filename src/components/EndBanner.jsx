@@ -32,7 +32,7 @@ function EndBanner() {
         </h2>
 
         <a
-          className="btn btn-light px-4 py-2 fw-semibold"
+          className="btn btn-light px-4 py-2 fw-semibold get-est bg-extra"
           style={{ textDecoration: "none" }}
           href="#Build-section-id"
         >
@@ -51,7 +51,7 @@ function EndBanner() {
             fontSize: "1.1rem",
           }}
         >
-          <span>Still have questions?</span>
+          <span style={{ color: "#FEBE00" }}>Still have questions?</span>
 
           {/* Phone link */}
           <a
@@ -60,7 +60,8 @@ function EndBanner() {
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              color: hovered === "phone" ? "#0dcaf0" : "white",
+              // color: hovered === "phone" ? "#0dcaf0" : "white",
+              color: hovered === "phone" ? "#FEBE00" : "white",
               textDecoration: "none",
               fontSize: "17px",
               fontWeight: 500,
@@ -81,7 +82,8 @@ function EndBanner() {
               display: "flex",
               alignItems: "center",
               gap: "8px",
-              color: hovered === "whatsapp" ? "#25D366" : "white",
+              // color: hovered === "whatsapp" ? "#25D366" : "white",
+              color: hovered === "whatsapp" ? "#FEBE00" : "white",
               textDecoration: "none",
               fontSize: "18px",
               fontWeight: 500,
