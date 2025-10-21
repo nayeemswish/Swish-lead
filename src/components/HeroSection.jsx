@@ -114,7 +114,12 @@ const HeroSection = () => {
       <div
         style={{
           position: "absolute",
-          left: windowWidth < 480 ? "20px" : "150px",
+          left:
+            windowWidth < 480
+              ? "45px" // mobile
+              : windowWidth < 992
+              ? "90px" // tablet
+              : "150px", // desktop,
           top: "30px",
           zIndex: "99999",
         }}

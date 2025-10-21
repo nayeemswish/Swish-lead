@@ -50,7 +50,7 @@ const KitchenwareSection = () => {
     // Smallest screens
     if (windowWidth < 480) {
       sectionMinHeight = "90vh";
-      marginLeft = "30px";
+      marginLeft = "20px";
       fontSizeTitle = "24px";
       fontSizeSubtitle = "14px";
       btnPadding = "8px 25px";
