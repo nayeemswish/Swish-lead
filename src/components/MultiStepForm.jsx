@@ -103,11 +103,15 @@ const MultiStepForm = () => {
           }
         );
 
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
         const result = await response.json();
         console.log(result);
 
         if (result.success) {
-          showSuccessToast();
+          showSuccessToast(
+            "Please check your email inbox for your free planning kit & SWISH product catalogue!"
+          );
           setFormData({
             fullName: "",
             email: "",
@@ -121,11 +125,11 @@ const MultiStepForm = () => {
           });
           setCurrentStep(0);
         } else {
-          alert("Failed to save form data!");
+          showErrorToast(result.error || "Failed to save form data!");
         }
       } catch (error) {
-        console.error("Error:", error);
-        alert("Server error, please try again later.");
+        console.error("Form submit error:", error);
+        showErrorToast("Server error, please try again later.");
       }
     }
   };
