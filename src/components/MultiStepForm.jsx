@@ -89,31 +89,44 @@ const MultiStepForm = () => {
     }, 10000);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateStep()) {
-      // do submission work (API call etc). For demo we just log and show toast.
-      console.log("Form Submitted:", formData);
+      try {
+        const response = await fetch(
+          "https://staging.swish.global/api/save_form.php",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+          }
+        );
 
-      // show toast
-      showSuccessToast();
+        const result = await response.json();
+        console.log(result);
 
-      // Reset form data (optional — you asked for reset previously)
-      setFormData({
-        fullName: "",
-        email: "",
-        number: "",
-        location: "",
-        size: "",
-        stage: "",
-        buyTimeline: "",
-        budget: "",
-        requirements: "",
-      });
-
-      // Reset step and errors
-      setCurrentStep(0);
-      setErrors({});
+        if (result.success) {
+          showSuccessToast();
+          setFormData({
+            fullName: "",
+            email: "",
+            number: "",
+            location: "",
+            size: "",
+            stage: "",
+            buyTimeline: "",
+            budget: "",
+            requirements: "",
+          });
+          setCurrentStep(0);
+        } else {
+          alert("Failed to save form data!");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Server error, please try again later.");
+      }
     }
   };
 
